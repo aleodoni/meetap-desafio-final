@@ -4,10 +4,10 @@ class Meetup extends Model {
   static init(sequelize) {
     super.init(
       {
-        titulo: Sequelize.STRING,
-        descricao: Sequelize.STRING,
-        localizacao: Sequelize.STRING,
-        data_hora: Sequelize.DATE,
+        title: Sequelize.STRING,
+        description: Sequelize.STRING,
+        place: Sequelize.STRING,
+        date: Sequelize.DATE,
       },
       {
         sequelize,

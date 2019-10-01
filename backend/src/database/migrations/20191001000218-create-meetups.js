@@ -7,19 +7,19 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      titulo: {
+      title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      descricao: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      localizacao: {
+      place: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      data_hora: {
+      date: {
         type: Sequelize.DATE,
         allowNull: false,
       },

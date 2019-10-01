@@ -3,10 +3,10 @@ import * as Yup from 'yup';
 export default async (req, res, next) => {
   try {
     const schema = Yup.object().shape({
-      titulo: Yup.string().required(),
-      descricao: Yup.string().required(),
-      localizacao: Yup.string().required(),
-      data_hora: Yup.date().required(),
+      title: Yup.string().required(),
+      description: Yup.string().required(),
+      place: Yup.string().required(),
+      date: Yup.date().required(),
       banner_id: Yup.number()
         .required()
         .integer(),

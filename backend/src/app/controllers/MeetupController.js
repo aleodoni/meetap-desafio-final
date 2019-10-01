@@ -1,87 +1,54 @@
-import { startOfHour, parseISO, isBefore } from 'date-fns';
-
 import Meetup from '../models/Meetup';
 import User from '../models/User';
 import File from '../models/File';
 
+import CreateMeetupService from '../services/CreateMeetupService';
+import UpdateMeetupService from '../services/UpdateMeetupService';
+import DeleteMeetupService from '../services/DeleteMeetupService';
+
 class MeetupController {
   async store(req, res) {
-    const { data_hora: date } = req.body;
+    const { title, description, place, date, banner_id } = req.body;
+    const { userId } = req;
 
-    // Verify if date is past date
-    const hourStart = startOfHour(parseISO(date));
-
-    if (isBefore(hourStart, new Date())) {
-      return res.status(400).json({ error: 'Past dates are not permitted' });
-    }
-
-    const meetup = await Meetup.create({
-      ...req.body,
-      user_id: req.userId,
+    const meetup = await CreateMeetupService.run({
+      title,
+      description,
+      place,
+      date,
+      bannerId: banner_id,
+      userId,
     });
 
     return res.json(meetup);
   }
 
   async update(req, res) {
-    const meetup = await Meetup.findByPk(req.params.id);
+    const meetupId = req.params.id;
 
-    /**
-     * Verify is the user is the meetup owner
-     */
+    const { title, description, place, date, banner_id } = req.body;
+
     const { userId } = req;
 
-    if (userId !== meetup.user_id) {
-      return res
-        .status(400)
-        .json({ error: "You can't update meetups your're not the owner" });
-    }
-
-    /**
-     * Verify if meetup date is past
-     */
-    if (isBefore(meetup.data_hora, new Date())) {
-      return res.status(400).json({ error: "You can't update past meetups" });
-    }
-
-    /**
-     * Verify if date is past date
-     */
-    const { data_hora: date } = req.body;
-
-    const hourStart = startOfHour(parseISO(date));
-
-    if (isBefore(hourStart, new Date())) {
-      return res.status(400).json({ error: 'Past dates are not permitted' });
-    }
-
-    await meetup.update(req.body);
+    const meetup = await UpdateMeetupService.run({
+      title,
+      description,
+      place,
+      date,
+      bannerId: banner_id,
+      userId,
+      meetupId,
+    });
 
     return res.json(meetup);
   }
 
   async delete(req, res) {
-    const meetup = await Meetup.findByPk(req.params.id);
+    const meetupId = req.params.id;
 
-    /**
-     * Verify is the user is the meetup owner
-     */
     const { userId } = req;
 
-    if (userId !== meetup.user_id) {
-      return res
-        .status(400)
-        .json({ error: "You can't delete meetups your're not the owner" });
-    }
-
-    /**
-     * Verify if meetup date is past
-     */
-    if (isBefore(meetup.data_hora, new Date())) {
-      return res.status(400).json({ error: "You can't delete past meetups" });
-    }
-
-    await meetup.destroy();
+    await DeleteMeetupService.run({ meetupId, userId });
 
     return res.send();
   }
@@ -91,10 +58,10 @@ class MeetupController {
 
     const meetups = await Meetup.findAll({
       where: { user_id: req.userId },
-      order: ['data_hora'],
+      order: ['date'],
       limit: 20,
       offset: (page - 1) * 20,
-      attributes: ['id', 'titulo', 'descricao', 'localizacao', 'data_hora'],
+      attributes: ['id', 'title', 'description', 'place', 'date'],
       include: [
         {
           model: User,

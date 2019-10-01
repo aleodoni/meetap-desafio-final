@@ -10,9 +10,7 @@ import authMiddleware from './app/middlewares/auth';
 
 import validatorUserStore from './app/validators/UserStore';
 import validatorUserUpdate from './app/validators/UserUpdate';
-
 import validatorSessionStore from './app/validators/SessionStore';
-
 import validatorMeetupStore from './app/validators/MeetupStore';
 
 const routes = new Router();
