@@ -1,14 +1,7 @@
 import User from '../models/User';
-import UserValidator from '../validators/UserValidator';
 
 class UserController {
   async store(req, res) {
-    const validator = new UserValidator();
-
-    if (!(await validator.validate(req, validator.schemaNew))) {
-      return res.status(400).json({ error: validator.errors });
-    }
-
     const userExists = await User.findOne({ where: { email: req.body.email } });
 
     if (userExists) {
@@ -26,12 +19,6 @@ class UserController {
   }
 
   async update(req, res) {
-    const validator = new UserValidator();
-
-    if (!(await validator.validate(req, validator.schemaUpdate))) {
-      return res.status(400).json({ error: validator.errors });
-    }
-
     const { email, oldPassword } = req.body;
 
     const user = await User.findByPk(req.userId);

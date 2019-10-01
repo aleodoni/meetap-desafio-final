@@ -1,18 +1,11 @@
 import { startOfHour, parseISO, isBefore } from 'date-fns';
 
 import Meetup from '../models/Meetup';
-import MeetupValidator from '../validators/MeetupValidator';
 import User from '../models/User';
 import File from '../models/File';
 
 class MeetupController {
   async store(req, res) {
-    const validator = new MeetupValidator();
-
-    if (!(await validator.validate(req))) {
-      return res.status(400).json({ error: validator.errors });
-    }
-
     const { data_hora: date } = req.body;
 
     // Verify if date is past date
@@ -31,12 +24,6 @@ class MeetupController {
   }
 
   async update(req, res) {
-    const validator = new MeetupValidator();
-
-    if (!(await validator.validate(req))) {
-      return res.status(400).json({ error: validator.errors });
-    }
-
     const meetup = await Meetup.findByPk(req.params.id);
 
     /**

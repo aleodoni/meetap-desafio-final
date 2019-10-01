@@ -1,17 +1,10 @@
 import jwt from 'jsonwebtoken';
 
-import SessionValidator from '../validators/SessionValidator';
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
-    const validator = new SessionValidator();
-
-    if (!(await validator.validate(req))) {
-      return res.status(400).json({ error: validator.errors });
-    }
-
     const { email, password } = req.body;
 
     const user = await User.findOne({ where: { email } });
