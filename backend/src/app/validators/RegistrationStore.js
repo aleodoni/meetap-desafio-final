@@ -1,0 +1,22 @@
+import * as Yup from 'yup';
+
+export default async (req, res, next) => {
+  try {
+    const schema = Yup.object().shape({
+      meetup_id: Yup.number()
+        .required()
+        .integer(),
+      user_id: Yup.number()
+        .required()
+        .integer(),
+    });
+
+    await schema.validate(req.body, { abortEarly: false });
+
+    return next();
+  } catch (err) {
+    return res
+      .status(400)
+      .json({ error: 'Validation fails', messages: err.inner });
+  }
+};

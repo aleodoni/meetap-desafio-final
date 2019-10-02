@@ -13,5 +13,5 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
-  logging: true,
+  logging: process.env.NODE_ENV !== 'production' ? console.log : null,
 };
