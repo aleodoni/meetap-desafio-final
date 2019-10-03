@@ -6,9 +6,6 @@ export default async (req, res, next) => {
       meetup_id: Yup.number()
         .required()
         .integer(),
-      user_id: Yup.number()
-        .required()
-        .integer(),
     });
 
     await schema.validate(req.body, { abortEarly: false });

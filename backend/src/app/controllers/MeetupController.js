@@ -1,12 +1,17 @@
-import Meetup from '../models/Meetup';
-import User from '../models/User';
-import File from '../models/File';
-
 import CreateMeetupService from '../services/CreateMeetupService';
 import UpdateMeetupService from '../services/UpdateMeetupService';
 import DeleteMeetupService from '../services/DeleteMeetupService';
+import ListMeetupService from '../services/ListMeetupService';
 
 class MeetupController {
+  async index(req, res) {
+    const { date, page = 1 } = req.query;
+
+    const meetups = await ListMeetupService.run({ date, page });
+
+    return res.json(meetups);
+  }
+
   async store(req, res) {
     const { title, description, place, date, banner_id } = req.body;
     const { userId } = req;
@@ -53,31 +58,31 @@ class MeetupController {
     return res.send();
   }
 
-  async index(req, res) {
-    const { page = 1 } = req.query;
+  // async index(req, res) {
+  //   const { page = 1 } = req.query;
 
-    const meetups = await Meetup.findAll({
-      where: { user_id: req.userId },
-      order: ['date'],
-      limit: 20,
-      offset: (page - 1) * 20,
-      attributes: ['id', 'title', 'description', 'place', 'date'],
-      include: [
-        {
-          model: User,
-          as: 'organizer',
-          attributes: ['id', 'name'],
-        },
-        {
-          model: File,
-          as: 'banner',
-          attributes: ['id', 'path', 'url'],
-        },
-      ],
-    });
+  //   const meetups = await Meetup.findAll({
+  //     where: { user_id: req.userId },
+  //     order: ['date'],
+  //     limit: 20,
+  //     offset: (page - 1) * 20,
+  //     attributes: ['id', 'title', 'description', 'place', 'date'],
+  //     include: [
+  //       {
+  //         model: User,
+  //         as: 'organizer',
+  //         attributes: ['id', 'name'],
+  //       },
+  //       {
+  //         model: File,
+  //         as: 'banner',
+  //         attributes: ['id', 'path', 'url'],
+  //       },
+  //     ],
+  //   });
 
-    return res.json(meetups);
-  }
+  //   return res.json(meetups);
+  // }
 }
 
 export default new MeetupController();

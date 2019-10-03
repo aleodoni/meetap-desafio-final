@@ -41,5 +41,6 @@ routes.post(
   validatorRegistrationStore,
   RegisterController.store
 );
+routes.get('/registrations', RegisterController.index);
 
 export default routes;
