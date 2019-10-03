@@ -18,7 +18,7 @@ export default createGlobalStyle`
     justify-content: center;
   }
   body {
-    background: #ddd;
+    background-image: linear-gradient(#25212e, #402744);
     -webkit-font-smoothing: antialiased !important;
   }
   body, input, button {
