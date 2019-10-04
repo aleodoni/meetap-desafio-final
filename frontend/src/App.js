@@ -13,11 +13,14 @@ import store from './store';
 // 191620 - escuro
 // 25212e - roxo escuro
 // 402744 - roxo claro
+// 271d2d - input
+// 4dbaf9 - botao primario (azul)
+// d44059 - botao secundario (vermelho)
 
 function App() {
   return (
     <Provider store={store}>
-      <Logo>M</Logo>
+      <Logo />
       <GlobalStyle />
     </Provider>
   );
