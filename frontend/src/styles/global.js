@@ -29,33 +29,31 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    color: #222;
-    font-size: 14px;
     font-family: Roboto, Arial, Helvetica, sans-serif;
   }
 
   button {
     cursor: pointer;
-    font-size: 24px;
+    /* font-size: 24px;
     padding: 20px 25px;
     border-radius: 6px;
     border: none;
     margin: 7px;
-    font-weight: bold;
+    font-weight: bold; */
   }
 
   input {
-    font-size: 24px;
-    background-color: #271d2d;
+     font-size: 24px;
+    /* background-color: #271d2d;
     color: #999;
     padding: 20px 25px;
     border-radius: 6px;
     border: none;
-    margin: 7px;
+    margin: 7px; */
   }
 
   a {
-    text-docoration: none;
+    text-decoration: none;
   }
 
   ul {

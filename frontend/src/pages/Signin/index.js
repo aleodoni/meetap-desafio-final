@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
+import { Link } from 'react-router-dom';
 
 import Logo from '../../components/layout/Logo';
 
@@ -14,7 +15,7 @@ export default function Signin() {
         <Logo />
       </div>
       <Form onSubmit={handleSubmit}>
-        <Input name="email" placeholder="Digite seu e-mail" />
+        <Input name="email" type="email" placeholder="Digite seu e-mail" />
         <Input
           name="password"
           type="password"
@@ -22,6 +23,7 @@ export default function Signin() {
         />
 
         <button type="submit">Entrar</button>
+        <Link to="/signup">Criar conta grátis</Link>
       </Form>
     </>
   );
