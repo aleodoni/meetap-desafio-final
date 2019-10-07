@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: center;
 
   color: #f94d6a;
-  font-size: 70px;
+  font-size: 60px;
   /* font-weight: bold; */
   font-family: Inder, Arial, Helvetica, sans-serif;
 `;
