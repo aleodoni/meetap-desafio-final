@@ -13,8 +13,17 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
 
   width: 100%;
+
+  ul {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    margin-top: 30px;
+  }
 `;
 
 export const Header = styled.div`
@@ -53,5 +62,35 @@ export const Header = styled.div`
     &:hover {
       background: ${darken(0.1, '#d44059')};
     }
+  }
+`;
+
+export const Meetup = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+
+  strong {
+    color: #fff;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+
+    svg {
+      margin-left: 20px;
+    }
+  }
+
+  button {
+    border: 0;
+    background: none;
   }
 `;

@@ -1,31 +1,26 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  token: null,
-  signed: false,
+  meetupId: null,
+  meetup: null,
   loading: false,
 };
 
 export default function auth(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@auth/SIGN_IN_REQUEST': {
+      case '@meetup/SELECT_REQUEST': {
         draft.loading = true;
         break;
       }
-      case '@auth/SIGN_IN_SUCCESS': {
-        draft.token = action.payload.token;
-        draft.signed = true;
+      case '@meetup/SELECT_SUCCESS': {
+        draft.meetup = action.payload.meetup;
+        draft.meetupId = action.payload.meetup.id;
         draft.loading = false;
         break;
       }
-      case '@auth/SIGN_FAILURE': {
+      case '@meetup/SELECT_FAILURE': {
         draft.loading = false;
-        break;
-      }
-      case '@auth/SIGN_OUT': {
-        draft.token = null;
-        draft.signed = false;
         break;
       }
       default:

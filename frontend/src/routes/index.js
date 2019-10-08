@@ -8,15 +8,17 @@ import Detail from '../pages/Detail';
 import Meetup from '../pages/Meetup';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
+import Profile from '../pages/Profile';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={Dashboard} isPrivate />
-      <Route path="/detail/:id" component={Detail} />
+      <Route path="/detail/" component={Detail} isPrivate />
       <Route path="/meetup/" component={Meetup} />
       <Route path="/signin/" component={Signin} />
       <Route path="/signup/" component={Signup} />
+      <Route path="/profile/" component={Profile} isPrivate />
     </Switch>
   );
 }

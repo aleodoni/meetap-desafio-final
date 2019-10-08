@@ -6,6 +6,7 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import MeetupController from './app/controllers/MeetupController';
+import UserMeetupController from './app/controllers/UserMeetupController';
 import RegisterController from './app/controllers/RegisterController';
 
 import authMiddleware from './app/middlewares/auth';
@@ -33,9 +34,15 @@ routes.use(authMiddleware);
 routes.put('/users', validatorUserUpdate, UserController.update);
 routes.post('/files', upload.single('file'), FileController.store);
 routes.get('/meetups', MeetupController.index);
-routes.post('/meetups', validatorMeetupStore, MeetupController.store);
-routes.put('/meetups/:id', validatorMeetupStore, MeetupController.update);
-routes.delete('/meetups/:id', MeetupController.delete);
+routes.get('/usermeetups', UserMeetupController.index);
+routes.get('/usermeetups/:id', UserMeetupController.index);
+routes.post('/usermeetups', validatorMeetupStore, UserMeetupController.store);
+routes.put(
+  '/usermeetups/:id',
+  validatorMeetupStore,
+  UserMeetupController.update
+);
+routes.delete('/usermeetups/:id', UserMeetupController.delete);
 routes.post(
   '/registrations',
   validatorRegistrationStore,
