@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { Form, Input, FileInput } from '@rocketseat/unform';
+import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
-import { parseISO } from 'date-fns';
 
 import BannerInput from './BannerInput';
 import MyDatePicker from './MyDatePicker';
