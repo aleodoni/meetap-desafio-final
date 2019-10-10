@@ -45,9 +45,10 @@ export default function Detail() {
         </Header>
         <Meetup>
           <img src={meetup.banner.url} alt="banner" />
-          <span>
+          {/* <span>
             <p align="justify">{meetup.description}</p>
-          </span>
+          </span> */}
+          <div className="text">{meetup.description}</div>
           <Info>
             <MdEvent size={24} />
             <span>{meetup.parsedDate}</span>

@@ -41,7 +41,7 @@ export default createGlobalStyle`
     background-image: linear-gradient(#25212e, #402744);
   }
 
-  body, input, button, textarea {
+  body, input, button, textarea, pre {
     font-family: Roboto, Arial, Helvetica, sans-serif;
   }
 

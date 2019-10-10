@@ -36,10 +36,12 @@ export const Meetup = styled.div`
     max-height: 400px;
   }
 
-  span {
-    font-size: 24px;
-    color: #fff;
+  div.text {
+    font-size: 22px;
     line-height: 40px;
+    width: 100%;
+    color: #fff;
+    white-space: pre-wrap;
   }
 `;
 
