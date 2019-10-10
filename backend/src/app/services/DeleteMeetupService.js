@@ -1,13 +1,13 @@
 import { isBefore } from 'date-fns';
 import bd from '../../database';
 import Meetup from '../models/Meetup';
-import File from '../models/File';
+// import File from '../models/File';
 
 class DeleteMeetupService {
   async run({ meetupId, userId }) {
     const meetup = await Meetup.findByPk(meetupId);
 
-    const fileId = meetup.banner_id;
+    // const fileId = meetup.banner_id;
 
     /**
      * Verify is the user is the meetup owner
