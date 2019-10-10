@@ -23,6 +23,54 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = false;
         break;
       }
+      case '@meetup/UPDATE_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@meetup/UPDATE_SUCCESS': {
+        draft.meetup = null;
+        draft.meetupId = null;
+        draft.loading = false;
+        break;
+      }
+      case '@meetup/UPDATE_FAILURE': {
+        draft.loading = false;
+        break;
+      }
+      case '@meetup/CREATE_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@meetup/CREATE_SUCCESS': {
+        draft.meetup = null;
+        draft.meetupId = null;
+        draft.loading = false;
+        break;
+      }
+      case '@meetup/CREATE_FAILURE': {
+        draft.loading = false;
+        break;
+      }
+      case '@meetup/CANCEL_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@meetup/CANCEL_SUCCESS': {
+        draft.meetup = null;
+        draft.meetupId = null;
+        draft.loading = false;
+        break;
+      }
+      case '@meetup/CANCEL_FAILURE': {
+        draft.loading = false;
+        break;
+      }
+      case '@meetup/CLEAN': {
+        draft.meetup = null;
+        draft.meetupId = null;
+        draft.loading = false;
+        break;
+      }
       default:
     }
   });

@@ -2,7 +2,8 @@ import Meetup from '../models/Meetup';
 import File from '../models/File';
 
 class ListUserMeetupService {
-  async run({ page, userId, id }) {
+  // async run({ page, userId, id }) {
+  async run({ userId, id }) {
     let meetups;
     if (id) {
       meetups = await Meetup.findOne({
@@ -24,8 +25,8 @@ class ListUserMeetupService {
           user_id: userId,
         },
         order: [['date', 'DESC']],
-        limit: 10,
-        offset: (page - 1) * 10,
+        // limit: 10,
+        // offset: (page - 1) * 10,
         include: [
           {
             model: File,

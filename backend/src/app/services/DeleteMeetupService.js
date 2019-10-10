@@ -28,9 +28,9 @@ class DeleteMeetupService {
     try {
       await meetup.destroy({ transaction });
 
-      const fileToDestroy = await File.findByPk(fileId, { transaction });
+      // const fileToDestroy = await File.findByPk(fileId, { transaction });
 
-      await fileToDestroy.destroy({ transaction });
+      // await fileToDestroy.destroy({ transaction });
 
       await transaction.commit();
     } catch (err) {

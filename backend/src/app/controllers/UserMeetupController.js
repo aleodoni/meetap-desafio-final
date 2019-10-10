@@ -9,8 +9,6 @@ class MeetupController {
     const { userId } = req;
     const { id } = req.params;
 
-    console.log(req.params);
-
     const meetups = await ListUserMeetupService.run({ page, userId, id });
 
     return res.json(meetups);

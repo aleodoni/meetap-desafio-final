@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,5 +9,4 @@ export const Wrapper = styled.div`
 
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(#25212e, #402744);
 `;

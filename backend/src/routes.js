@@ -25,6 +25,7 @@ const upload = multer(multerConfig);
  */
 routes.post('/users', validatorUserStore, UserController.store);
 routes.post('/sessions', validatorSessionStore, SessionController.store);
+routes.get('/meetups', MeetupController.index);
 
 routes.use(authMiddleware);
 
@@ -33,7 +34,6 @@ routes.use(authMiddleware);
  */
 routes.put('/users', validatorUserUpdate, UserController.update);
 routes.post('/files', upload.single('file'), FileController.store);
-routes.get('/meetups', MeetupController.index);
 routes.get('/usermeetups', UserMeetupController.index);
 routes.get('/usermeetups/:id', UserMeetupController.index);
 routes.post('/usermeetups', validatorMeetupStore, UserMeetupController.store);

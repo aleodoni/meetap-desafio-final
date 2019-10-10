@@ -24,12 +24,12 @@ module.exports = {
     'no-console': ['error', { allow: ['tron'] }],
     'no-param-reassign': 'off',
     // 'react/prop-types': 0,
-    // 'react/jsx-props-no-spreading': [
-    //   {
-    //     html: 0,
-    //     custom: 0,
-    //   },
-    // ],
+    'react/jsx-props-no-spreading': [
+      {
+        html: 0,
+        custom: 0,
+      },
+    ],
   },
   settings: {
     'import/resolver': {

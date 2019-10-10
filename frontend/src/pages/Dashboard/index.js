@@ -8,12 +8,18 @@ import { format, parseISO } from 'date-fns';
 
 import { Container, Content, Header, Meetup } from './styles';
 import api from '~/service/api';
-import { selectMeetupRequest } from '~/store/modules/meetup/actions';
+import {
+  selectMeetupRequest,
+  cleanMeetup,
+} from '~/store/modules/meetup/actions';
+import history from '~/service/history';
 
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
 
   const dispatch = useDispatch();
+
+  dispatch(cleanMeetup());
 
   useEffect(() => {
     async function loadMeetups() {
@@ -41,12 +47,16 @@ export default function Dashboard() {
     dispatch(selectMeetupRequest(meetupId));
   }
 
+  function handleNewMeetupClick() {
+    history.push('/meetup/');
+  }
+
   return (
     <Container>
       <Content>
         <Header>
           <h1>Meus meetups</h1>
-          <button type="button">
+          <button type="button" onClick={handleNewMeetupClick}>
             <MdAddCircleOutline size={24} />
             Novo meetup
           </button>

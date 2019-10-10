@@ -27,9 +27,21 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased !important;
+    background-size: 100%;
+	  background-repeat: no-repeat;
   }
 
-  body, input, button {
+  body:before {
+    content:'';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    background-image: linear-gradient(#25212e, #402744);
+  }
+
+  body, input, button, textarea {
     font-family: Roboto, Arial, Helvetica, sans-serif;
   }
 
@@ -43,7 +55,7 @@ export default createGlobalStyle`
     font-weight: bold; */
   }
 
-  input {
+  input, textarea {
      font-size: 24px;
     /* background-color: #271d2d;
     color: #999;
