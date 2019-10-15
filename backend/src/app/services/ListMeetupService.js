@@ -9,7 +9,7 @@ class ListMeetupService {
   async run({ date, page }) {
     const parsedDate = parseISO(date);
 
-    const meetup = await Meetup.findAll({
+    const meetup = await Meetup.findAndCountAll({
       where: {
         date: {
           [Op.between]: [startOfDay(parsedDate), endOfDay(parsedDate)],

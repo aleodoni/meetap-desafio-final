@@ -24,7 +24,6 @@ export default function BannerInput() {
   }, [ref.current, fieldName]); //eslint-disable-line
 
   async function handleChange(e) {
-    console.tron.log('MUDOU');
     const data = new FormData();
     data.append('file', e.target.files[0]);
     const response = await api.post('files', data);
@@ -40,14 +39,13 @@ export default function BannerInput() {
           <img src={preview} alt="" />
         </div>
       );
-    } else {
-      return (
-        <div>
-          <MdPhotoCamera size={60} />
-          <h2>Selecionar imagem</h2>
-        </div>
-      );
     }
+    return (
+      <div>
+        <MdPhotoCamera size={60} />
+        <h2>Selecionar imagem</h2>
+      </div>
+    );
   }
 
   return (

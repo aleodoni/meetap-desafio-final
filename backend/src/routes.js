@@ -49,5 +49,6 @@ routes.post(
   RegisterController.store
 );
 routes.get('/registrations', RegisterController.index);
+routes.delete('/registrations/:id', RegisterController.delete);
 
 export default routes;
