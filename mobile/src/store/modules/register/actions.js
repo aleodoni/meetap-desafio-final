@@ -1,6 +1,4 @@
-export function registerRequest(
-  meetupId,
-) {
+export function registerRequest(meetupId) {
   return {
     type: '@register/REGISTER_REQUEST',
     payload: { meetupId },
@@ -20,20 +18,16 @@ export function registerFailure() {
   };
 }
 
-
-export function cancelRegisterRequest(
-  meetupId,
-) {
+export function cancelRegisterRequest(registrationId) {
   return {
     type: '@register/CANCEL_REGISTER_REQUEST',
-    payload: { meetupId },
+    payload: { registrationId },
   };
 }
 
-export function cancelRegisterSuccess(meetup) {
+export function cancelRegisterSuccess() {
   return {
     type: '@register/CANCEL_REGISTER_SUCCESS',
-    payload: { meetup },
   };
 }
 

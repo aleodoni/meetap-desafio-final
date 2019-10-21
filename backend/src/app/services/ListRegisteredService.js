@@ -1,6 +1,8 @@
 import { Op } from 'sequelize';
 
 import Meetup from '../models/Meetup';
+import File from '../models/File';
+import User from '../models/User';
 import Registration from '../models/Registration';
 
 class ListRegisteredService {
@@ -15,14 +17,31 @@ class ListRegisteredService {
       order: [['meetup', 'date']],
       include: [
         {
+          model: User,
+          as: 'registered',
+          attributes: ['id', 'name'],
+        },
+        {
           model: Meetup,
           as: 'meetup',
-          attributes: ['id', 'title', 'date'],
+          attributes: ['id', 'title', 'date', 'place'],
           where: {
             date: {
               [Op.gte]: today,
             },
           },
+          include: [
+            {
+              model: File,
+              as: 'banner',
+              attributes: ['id', 'path', 'url'],
+            },
+            {
+              model: User,
+              as: 'organizer',
+              attributes: ['id', 'name'],
+            },
+          ],
         },
       ],
     });

@@ -24,15 +24,15 @@ class RegisterController {
   }
 
   async delete(req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
     const { userId } = req;
 
-    const registration = await DeleteRegisterService.run({
+    await DeleteRegisterService.run({
       id,
       userId,
     });
 
-    return res.json(registration);
+    return res.send();
   }
 }
 

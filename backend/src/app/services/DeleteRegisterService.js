@@ -1,5 +1,6 @@
 import { isAfter } from 'date-fns';
 import Registration from '../models/Registration';
+import bd from '../../database';
 import Meetup from '../models/Meetup';
 // import File from '../models/File';
 
@@ -10,7 +11,7 @@ class DeleteRegistrationService {
         {
           model: Meetup,
           as: 'meetup',
-          attributes: ['id', 'date'],
+          attributes: ['id', 'title', 'date', 'place'],
         },
       ],
     });
@@ -25,13 +26,16 @@ class DeleteRegistrationService {
     /**
      * Verify if meetup date is past
      */
-    if (isAfter(registration.meetup.date, new Date())) {
+    if (isAfter(new Date(), registration.meetup.date)) {
       throw new Error("You can't cancel registration on past meetups");
     }
 
+    const transaction = await bd.connection.transaction();
     try {
-      await registration.destroy();
+      await registration.destroy({ transaction });
+      await transaction.commit();
     } catch (err) {
+      if (transaction) await transaction.rollback();
       throw new Error(err);
     }
   }

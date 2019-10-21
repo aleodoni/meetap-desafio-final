@@ -1,24 +1,19 @@
-import {takeLatest, call, put, all} from 'redux-saga/effects';
-import {Alert} from 'react-native';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { Alert } from 'react-native';
 
 import api from '~/services/api';
 
-import {signInSuccess, signFailure} from './actions';
+import { signInSuccess, signFailure } from './actions';
 
-export function* signIn({payload}) {
+export function* signIn({ payload }) {
   try {
-    console.tron.log('SIGNIN');
-    const {email, password} = payload;
+    const { email, password } = payload;
 
     const response = yield call(api.post, 'sessions', {
       email,
       password,
     });
-    console.tron.log('CHAMOU API');
-
-    console.tron.log(response.data);
-
-    const {token, user} = response.data;
+    const { token, user } = response.data;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
@@ -26,18 +21,17 @@ export function* signIn({payload}) {
 
     // history.push('/');
   } catch (err) {
-    console.tron.log('ERRO');
     Alert.alert(
       'Erro no login',
-      'Falha na autenticação, verifique seus dados.',
+      'Falha na autenticação, verifique seus dados.'
     );
     yield put(signFailure());
   }
 }
 
-export function* signUp({payload}) {
+export function* signUp({ payload }) {
   try {
-    const {name, email, password} = payload;
+    const { name, email, password } = payload;
 
     yield call(api.post, 'users', {
       name,
@@ -53,10 +47,10 @@ export function* signUp({payload}) {
   }
 }
 
-export function setToken({payload}) {
+export function setToken({ payload }) {
   if (!payload) return;
 
-  const {token} = payload.auth;
+  const { token } = payload.auth;
 
   if (token) {
     api.defaults.headers.Authorization = `Bearer ${token}`;

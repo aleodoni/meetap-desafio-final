@@ -26,7 +26,6 @@ export default function register(state = INITIAL_STATE, action) {
         break;
       }
       case '@register/CANCEL_REGISTER_SUCCESS': {
-        draft.meetup = action.payload.meetup;
         draft.loading = false;
         break;
       }
