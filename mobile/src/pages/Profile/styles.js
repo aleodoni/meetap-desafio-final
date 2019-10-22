@@ -25,10 +25,21 @@ export const Form = styled.View`
 
 export const FormInput = styled(Input)`
   margin-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
 `;
 
 export const SubmitButton = styled(Button)`
   margin-top: 5px;
+  margin-left: 30px;
+  margin-right: 30px;
+`;
+
+export const LogoutButton = styled(Button)`
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  background-color: #a13043;
 `;
 
 export const Separator = styled.View`

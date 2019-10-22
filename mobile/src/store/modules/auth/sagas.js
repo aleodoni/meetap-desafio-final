@@ -13,6 +13,7 @@ export function* signIn({ payload }) {
       email,
       password,
     });
+
     const { token, user } = response.data;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
@@ -21,6 +22,7 @@ export function* signIn({ payload }) {
 
     // history.push('/');
   } catch (err) {
+    console.tron.log(err);
     Alert.alert(
       'Erro no login',
       'Falha na autenticação, verifique seus dados.'
