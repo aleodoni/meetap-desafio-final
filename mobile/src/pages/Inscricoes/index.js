@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { useDispatch } from 'react-redux';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { withNavigationFocus } from 'react-navigation';
@@ -17,12 +19,9 @@ function Inscricoes({ isFocused }) {
   const dispatch = useDispatch();
 
   const [registeredMeetups, setRegisteredMeetups] = useState([]);
-  const [page, setPage] = useState(1);
 
   async function loadRegisteredMeetups() {
-    const response = await api.get('registrations', {
-      params: { page },
-    });
+    const response = await api.get('registrations');
 
     console.tron.log(response);
 
@@ -41,10 +40,6 @@ function Inscricoes({ isFocused }) {
 
     setRegisteredMeetups(data);
     // setPage(page + 1);
-  }
-
-  async function loadMoreMeetups() {
-    await loadRegisteredMeetups();
   }
 
   useEffect(() => {
@@ -84,11 +79,21 @@ function Inscricoes({ isFocused }) {
   );
 }
 
+function IncricoesIcon({ tintColor }) {
+  return <Icon name="local-offer" size={20} color={tintColor} />;
+}
+
+IncricoesIcon.propTypes = {
+  tintColor: PropTypes.string.isRequired,
+};
+
+Inscricoes.propTypes = {
+  isFocused: PropTypes.bool.isRequired,
+};
+
 Inscricoes.navigationOptions = {
   tabBarLabel: 'Inscrições',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="local-offer" size={20} color={tintColor} />
-  ),
+  tabBarIcon: IncricoesIcon,
 };
 
 export default withNavigationFocus(Inscricoes);

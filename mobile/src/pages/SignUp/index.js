@@ -1,8 +1,10 @@
-import React, {useRef, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import Background from '~/components/Background';
-import {signUpRequest} from '~/store/modules/auth/actions';
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 import {
   Container,
@@ -13,7 +15,7 @@ import {
   SignLinkText,
 } from './styles';
 
-export default function SignUp({navigation}) {
+export default function SignUp({ navigation }) {
   const dispatch = useDispatch();
 
   const emailRef = useRef();
@@ -76,10 +78,17 @@ export default function SignUp({navigation}) {
         <SignLink
           onPress={() => {
             navigation.navigate('SignIn');
-          }}>
+          }}
+        >
           <SignLinkText>Já tenho login</SignLinkText>
         </SignLink>
       </Container>
     </Background>
   );
 }
+
+SignUp.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};

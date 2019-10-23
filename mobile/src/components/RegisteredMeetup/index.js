@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import {
   Container,
@@ -14,9 +15,7 @@ import {
   Title,
 } from './styles';
 
-export default function Meetup({ data, onHandleCancel }) {
-  const dispatch = useDispatch();
-
+export default function RegisteredMeetup({ data, onHandleCancel }) {
   const loading = useSelector(state => state.meetup.loading);
 
   return (
@@ -43,3 +42,20 @@ export default function Meetup({ data, onHandleCancel }) {
     </Container>
   );
 }
+
+RegisteredMeetup.propTypes = {
+  data: PropTypes.shape({
+    meetup: PropTypes.shape({
+      banner: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+      }),
+      title: PropTypes.string.isRequired,
+      place: PropTypes.string.isRequired,
+      organizer: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    formattedDate: PropTypes.string.isRequired,
+  }).isRequired,
+  onHandleCancel: PropTypes.func.isRequired,
+};
