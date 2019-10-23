@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Background from '~/components/Background';
+import LogSign from '~/components/LogoSign';
 import { signUpRequest } from '~/store/modules/auth/actions';
 
 import {
@@ -34,6 +35,7 @@ export default function SignUp({ navigation }) {
   return (
     <Background>
       <Container>
+        <LogSign />
         <Form>
           <FormInput
             icon="person-outline"

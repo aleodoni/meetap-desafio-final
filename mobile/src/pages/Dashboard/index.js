@@ -9,6 +9,7 @@ import pt from 'date-fns/locale/pt';
 
 import Background from '~/components/Background';
 import Meetup from '~/components/Meetup';
+import Logo from '~/components/Logo';
 
 import { Container, Title, List, DateSelect, Button } from './styles';
 import api from '~/services/api';
@@ -81,6 +82,7 @@ function Dashboard({ isFocused }) {
   return (
     <Background>
       <Container>
+        <Logo />
         <DateSelect>
           <Button onPress={handlePrevDay}>
             <Icon name="chevron-left" size={25} color="#fff" />

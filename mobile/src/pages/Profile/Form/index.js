@@ -7,7 +7,6 @@ import { Formik } from 'formik';
 
 import {
   Container,
-  Title,
   Form,
   FormInput,
   Separator,
@@ -16,6 +15,8 @@ import {
 } from '../styles';
 
 import { Error } from './styles';
+
+import Logo from '~/components/Logo';
 
 import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
@@ -55,7 +56,7 @@ export default function FormikForm() {
 
   return (
     <Container>
-      <Title>Meu perfil{profile.name}</Title>
+      <Logo />
       <Formik
         validationSchema={formValidationSchema}
         initialValues={{

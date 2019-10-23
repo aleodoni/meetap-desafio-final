@@ -9,11 +9,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '~/components/Background';
 import RegisteredMeetup from '~/components/RegisteredMeetup';
+import Logo from '~/components/Logo';
+
 import { cancelRegisterRequest } from '~/store/modules/register/actions';
 
 import api from '~/services/api';
 
-import { Container, List, Title } from './styles';
+import { Container, List } from './styles';
 
 function Inscricoes({ isFocused }) {
   const dispatch = useDispatch();
@@ -62,7 +64,7 @@ function Inscricoes({ isFocused }) {
   return (
     <Background>
       <Container>
-        <Title>Inscrições</Title>
+        <Logo />
         <List
           // onEndReached={loadMoreMeetups}
           data={registeredMeetups}
