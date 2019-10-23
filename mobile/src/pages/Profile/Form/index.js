@@ -162,28 +162,53 @@ export default function FormikForm() {
 }
 
 FormikForm.propTypes = {
-  props: PropTypes.shape({}).isRequired,
   values: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     oldPassword: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     confirmPassword: PropTypes.string.isRequired,
-  }).isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  }),
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
   errors: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     oldPassword: PropTypes.string.isRequired,
     confirmPassword: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   touched: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     oldPassword: PropTypes.string.isRequired,
     confirmPassword: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
+};
+
+FormikForm.defaultProps = {
+  touched: {
+    name: '',
+    email: '',
+    oldPassword: '',
+    password: '',
+    confirmPassword: '',
+  },
+  errors: {
+    name: '',
+    email: '',
+    oldPassword: '',
+    password: '',
+    confirmPassword: '',
+  },
+  values: {
+    name: '',
+    email: '',
+    oldPassword: '',
+    password: '',
+    confirmPassword: '',
+  },
+  handleSubmit: null,
+  handleChange: null,
 };
