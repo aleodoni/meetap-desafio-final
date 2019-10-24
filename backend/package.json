@@ -20,7 +20,8 @@
     "pg": "^7.12.1",
     "sequelize": "^5.19.1",
     "youch": "^2.0.10",
-    "yup": "^0.27.0"
+    "yup": "^0.27.0",
+    "faker": "^4.1.0"
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "^2.0.0",
@@ -31,7 +32,6 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "factory-girl": "^5.0.4",
-    "faker": "^4.1.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.3",
     "prettier": "^1.18.2",

@@ -112,7 +112,7 @@ export default function FormikForm() {
             <FormInput
               icon="lock-outline"
               secureTextEntry
-              placeholder="Sua senha atual"
+              placeholder="Senha atual"
               ref={oldPasswordRef}
               returnKeyType="next"
               onSubmitEditing={() => passwordRef.current.focus()}
@@ -126,7 +126,7 @@ export default function FormikForm() {
             <FormInput
               icon="lock-outline"
               secureTextEntry
-              placeholder="Sua nova senha"
+              placeholder="Nova senha"
               ref={passwordRef}
               returnKeyType="next"
               onSubmitEditing={() => confirmPasswordRef.current.focus()}

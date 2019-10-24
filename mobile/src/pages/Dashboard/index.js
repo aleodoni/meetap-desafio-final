@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { withNavigationFocus } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { format, subDays, addDays, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import pt from 'date-fns/locale/pt-BR';
 
 import Background from '~/components/Background';
 import Meetup from '~/components/Meetup';
