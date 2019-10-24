@@ -59,32 +59,6 @@ class MeetupController {
 
     return res.send();
   }
-
-  // async index(req, res) {
-  //   const { page = 1 } = req.query;
-
-  //   const meetups = await Meetup.findAll({
-  //     where: { user_id: req.userId },
-  //     order: ['date'],
-  //     limit: 20,
-  //     offset: (page - 1) * 20,
-  //     attributes: ['id', 'title', 'description', 'place', 'date'],
-  //     include: [
-  //       {
-  //         model: User,
-  //         as: 'organizer',
-  //         attributes: ['id', 'name'],
-  //       },
-  //       {
-  //         model: File,
-  //         as: 'banner',
-  //         attributes: ['id', 'path', 'url'],
-  //       },
-  //     ],
-  //   });
-
-  //   return res.json(meetups);
-  // }
 }
 
 export default new MeetupController();
