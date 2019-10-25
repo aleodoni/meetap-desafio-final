@@ -1,4 +1,4 @@
-# Meetap Desafio Final GoStack 8
+# Meetapp Desafio Final GoStack 8
 
 Desafio final para certificação do GoStack. Aplicação Metapp.
 
