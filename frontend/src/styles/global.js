@@ -47,22 +47,10 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
-    /* font-size: 24px;
-    padding: 20px 25px;
-    border-radius: 6px;
-    border: none;
-    margin: 7px;
-    font-weight: bold; */
   }
 
   input, textarea {
      font-size: 24px;
-    /* background-color: #271d2d;
-    color: #999;
-    padding: 20px 25px;
-    border-radius: 6px;
-    border: none;
-    margin: 7px; */
   }
 
   a {

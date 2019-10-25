@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { parseISO } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
@@ -36,7 +37,6 @@ export default function MyDatePicker({ name }) {
       <DatePicker
         name={fieldName}
         selected={selected}
-        // onChange={date => setSelected(date)}
         onChange={date => handleChange(date)}
         timeFormat="HH:mm"
         timeIntervals={30}
@@ -51,3 +51,7 @@ export default function MyDatePicker({ name }) {
     </Container>
   );
 }
+
+MyDatePicker.propTypes = {
+  name: PropTypes.string.isRequired,
+};

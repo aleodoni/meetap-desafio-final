@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
 
@@ -17,7 +16,6 @@ export const Container = styled.div`
   label {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     align-self: center;
     flex: 1;
 

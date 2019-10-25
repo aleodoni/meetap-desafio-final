@@ -23,7 +23,11 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-console': ['error', { allow: ['tron'] }],
     'no-param-reassign': 'off',
-    // 'react/prop-types': 0,
+    'react/jsx-props-no-spreading': [
+      {
+        html: 0,
+      },
+    ],
   },
   settings: {
     'import/resolver': {

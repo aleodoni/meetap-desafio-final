@@ -11,15 +11,6 @@ import GlobalStyle from './styles/global';
 import Routes from './routes';
 import { store, persistor } from './store';
 
-// Cores
-// f94d6a - rosa
-// 191620 - escuro
-// 25212e - roxo escuro
-// 402744 - roxo claro
-// 271d2d - input
-// 4dbaf9 - botao primario (azul)
-// d44059 - botao secundario (vermelho)
-
 function App() {
   return (
     <Provider store={store}>

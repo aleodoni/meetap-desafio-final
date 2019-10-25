@@ -8,7 +8,7 @@ import DefaultLayout from '~/pages/_layouts/default';
 import { store } from '~/store';
 
 export default function RouteWrapper(
-  { isPrivate, component: Component, path },
+  { isPrivate, component: Component },
   rest
 ) {
   const { signed } = store.getState().auth;
