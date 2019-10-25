@@ -25,8 +25,6 @@ class ListUserMeetupService {
           user_id: userId,
         },
         order: [['date', 'DESC']],
-        // limit: 10,
-        // offset: (page - 1) * 10,
         include: [
           {
             model: File,
