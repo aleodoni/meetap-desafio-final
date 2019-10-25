@@ -23,12 +23,26 @@ Foram criadas as migrations e seeds para o banco de dados.
 
 As seeds do model File já fazem a relação com as imagens que estão em /tmp/uplodas.
 
+Para iniciar a aplicação :
+```yarn dev```
+
+Para iniciar a fila :
+```yarn queue```
+
+
 ## Frontend
 
 Arquivo ```.env``` com todas as variáveis de ambiente necessárias para o projeto.
+
+Para iniciar a aplicação :
+```yarn start```
 
 ## Mobile
 
 Apenas para android
 
 Arquivo ```.env``` com todas as variáveis de ambiente necessárias para o projeto.
+
+Para iniciar a aplicação :
+```yarn android```
+```yarn start```
