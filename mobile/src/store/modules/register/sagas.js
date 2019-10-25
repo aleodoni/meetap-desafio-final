@@ -1,6 +1,4 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import pt from 'date-fns/locale/pt';
-import { format, parseISO } from 'date-fns';
 import { Alert } from 'react-native';
 
 import api from '~/services/api';
@@ -12,7 +10,7 @@ import {
   registerFailure,
 } from './actions';
 
-export function* register({ payload }) {
+export function* registerMeetup({ payload }) {
   try {
     const { meetupId } = payload;
 
@@ -37,7 +35,7 @@ export function* cancelRegister({ payload }) {
   try {
     const { registrationId } = payload;
 
-    const response = yield call(api.delete, `registrations/${registrationId}`);
+    yield call(api.delete, `registrations/${registrationId}`);
 
     Alert.alert('Sucesso', 'Registro cancelado com sucesso.');
 
@@ -49,6 +47,6 @@ export function* cancelRegister({ payload }) {
 }
 
 export default all([
-  takeLatest('@register/REGISTER_REQUEST', register),
+  takeLatest('@register/REGISTER_REQUEST', registerMeetup),
   takeLatest('@register/CANCEL_REGISTER_REQUEST', cancelRegister),
 ]);

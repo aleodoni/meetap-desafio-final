@@ -33,7 +33,7 @@ export default function RegisteredMeetup({ data, onHandleCancel }) {
         </Place>
         <Organizator>
           <Icon name="person" size={15} color="#888" />
-          <Texto>{data.meetup.organizer.name}</Texto>
+          <Texto>Organizador: {data.meetup.organizer.name}</Texto>
         </Organizator>
         <CancelButton loading={loading} onPress={onHandleCancel}>
           Cancelar inscrição

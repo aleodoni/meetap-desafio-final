@@ -59,7 +59,8 @@ export function* updateMeetup({ payload }) {
 
     history.push('/');
   } catch (err) {
-    toast.error('Falha ao salvar meetup, verifique seus dados.');
+    const errMsg = err.response.data.error.message;
+    toast.error(`Falha ao atualizar meetup, ${errMsg}.`);
     yield put(updateMeetupFailure());
   }
 }
@@ -77,7 +78,8 @@ export function* createMeetup({ payload }) {
 
     history.push('/');
   } catch (err) {
-    toast.error('Falha ao salvar meetup, verifique seus dados.');
+    const errMsg = err.response.data.error.message;
+    toast.error(`Falha ao salvar meetup, ${errMsg}.`);
     yield put(createMeetupFailure());
   }
 }
@@ -94,7 +96,8 @@ export function* cancelMeetup({ payload }) {
 
     toast.success('Meetup cancelada com sucesso.');
   } catch (err) {
-    toast.error('Falha ao cancelar meetup, verifique seus dados.');
+    const errMsg = err.response.data.error.message;
+    toast.error(`Falha ao cancelar meetup, ${errMsg}.`);
     yield put(cancelMeetupFailure());
   }
 }

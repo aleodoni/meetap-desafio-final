@@ -6,7 +6,6 @@ class CreateMeetupService {
     if (!userId) {
       throw new Error('User not logged in.');
     }
-
     const hourStart = startOfHour(parseISO(date));
 
     if (isBefore(hourStart, new Date())) {

@@ -143,7 +143,6 @@ export default function FormikForm() {
               placeholder="Confirmação de senha"
               ref={confirmPasswordRef}
               returnKeyType="send"
-              // onSubmitEditing={handleSubmit}
               value={props.values.confirmPassword}
               onChangeText={props.handleChange('confirmPassword')}
             />

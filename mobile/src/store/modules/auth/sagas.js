@@ -19,10 +19,7 @@ export function* signIn({ payload }) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
-
-    // history.push('/');
   } catch (err) {
-    console.tron.log(err);
     Alert.alert(
       'Erro no login',
       'Falha na autenticação, verifique seus dados.'
@@ -41,7 +38,18 @@ export function* signUp({ payload }) {
       password,
     });
 
-    // history.push('/');
+    Alert.alert('Sucesso', 'Usuário cadastrado com sucesso.');
+
+    const response = yield call(api.post, 'sessions', {
+      email,
+      password,
+    });
+
+    const { token, user } = response.data;
+
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
+    yield put(signInSuccess(token, user));
   } catch (error) {
     Alert.alert('Falha no cadastro', 'Verifique seus dados!');
 
@@ -59,9 +67,7 @@ export function setToken({ payload }) {
   }
 }
 
-export function signOut() {
-  // history.push('/');
-}
+export function signOut() {}
 
 export default all([
   takeLatest('persist/REHYDRATE', setToken),

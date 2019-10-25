@@ -41,7 +41,6 @@ function Inscricoes({ isFocused }) {
     });
 
     setRegisteredMeetups(data);
-    // setPage(page + 1);
   }
 
   useEffect(() => {
@@ -66,7 +65,6 @@ function Inscricoes({ isFocused }) {
       <Container>
         <Logo />
         <List
-          // onEndReached={loadMoreMeetups}
           data={registeredMeetups}
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (

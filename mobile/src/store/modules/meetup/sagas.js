@@ -1,7 +1,7 @@
-import {takeLatest, call, put, all} from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 import pt from 'date-fns/locale/pt';
-import {format, parseISO} from 'date-fns';
-import {Alert} from 'react-native';
+import { format, parseISO } from 'date-fns';
+import { Alert } from 'react-native';
 
 import api from '~/services/api';
 
@@ -16,16 +16,16 @@ import {
   cancelMeetupSuccess,
 } from './actions';
 
-export function* select({payload}) {
+export function* select({ payload }) {
   try {
-    const {meetupId} = payload;
+    const { meetupId } = payload;
 
     const response = yield call(api.get, `usermeetups/${meetupId}`);
 
     const parsedDate = format(
       parseISO(response.data.date),
       "dd 'de' MMMM', às ' HH:mm'h'",
-      {locale: pt},
+      { locale: pt }
     );
 
     const meetup = {
@@ -42,9 +42,9 @@ export function* select({payload}) {
   }
 }
 
-export function* updateMeetup({payload}) {
+export function* updateMeetup({ payload }) {
   try {
-    const {id} = payload;
+    const { id } = payload;
 
     yield call(api.put, `usermeetups/${id}`, {
       ...payload,
@@ -62,7 +62,7 @@ export function* updateMeetup({payload}) {
   }
 }
 
-export function* createMeetup({payload}) {
+export function* createMeetup({ payload }) {
   try {
     yield call(api.post, 'usermeetups', {
       ...payload,
@@ -80,13 +80,11 @@ export function* createMeetup({payload}) {
   }
 }
 
-export function* cancelMeetup({payload}) {
+export function* cancelMeetup({ payload }) {
   try {
-    const {id} = payload;
+    const { id } = payload;
 
     yield call(api.delete, `usermeetups/${id}`);
-
-    // history.push('/');
 
     yield put(cancelMeetupSuccess());
 

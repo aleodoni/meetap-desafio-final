@@ -1,12 +1,12 @@
-import {takeLatest, call, put, all} from 'redux-saga/effects';
-import {Alert} from 'react-native';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { Alert } from 'react-native';
 
 import api from '~/services/api';
-import {updateProfileFailure, updateProfileSuccess} from './actions';
+import { updateProfileFailure, updateProfileSuccess } from './actions';
 
-export function* updateProfile({payload}) {
+export function* updateProfile({ payload }) {
   try {
-    const {name, email, ...rest} = payload.data;
+    const { name, email, ...rest } = payload.data;
 
     const profile = {
       name,

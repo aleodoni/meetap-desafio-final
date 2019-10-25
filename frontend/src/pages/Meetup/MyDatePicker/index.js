@@ -38,10 +38,10 @@ export default function MyDatePicker({ name }) {
         name={fieldName}
         selected={selected}
         onChange={date => handleChange(date)}
-        timeFormat="HH:mm"
+        timeFormat="p"
         timeIntervals={30}
         timeCaption="hora"
-        dateFormat="d MMMM yyyy h:mm aa"
+        dateFormat="Pp"
         showTimeSelect
         ref={ref}
         locale={pt}

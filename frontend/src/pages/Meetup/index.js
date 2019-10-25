@@ -26,12 +26,22 @@ export default function Meetup() {
   });
 
   function handleSubmit({ title, description, date, place, banner }) {
+    const formattedDate = new Date(date).toISOString();
     if (meetup) {
       dispatch(
-        updateMeetupRequest(meetup.id, title, description, date, place, banner)
+        updateMeetupRequest(
+          meetup.id,
+          title,
+          description,
+          formattedDate,
+          place,
+          banner
+        )
       );
     } else {
-      dispatch(createMeetupRequest(title, description, date, place, banner));
+      dispatch(
+        createMeetupRequest(title, description, formattedDate, place, banner)
+      );
     }
   }
 

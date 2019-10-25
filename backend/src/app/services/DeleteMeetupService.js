@@ -16,7 +16,7 @@ class DeleteMeetupService {
     /**
      * Verify if meetup date is past
      */
-    if (isBefore(meetup.data_hora, new Date())) {
+    if (isBefore(meetup.date, new Date())) {
       throw new Error("You can't delete past meetups");
     }
 

@@ -33,7 +33,7 @@ export default function Meetup({ data, onHandleRegister }) {
         </Place>
         <Organizator>
           <Icon name="person" size={15} color="#888" />
-          <Texto>{data.organizer.name}</Texto>
+          <Texto>Organizador: {data.organizer.name}</Texto>
         </Organizator>
         <RegisterButton loading={loading} onPress={onHandleRegister}>
           Realizar inscrição

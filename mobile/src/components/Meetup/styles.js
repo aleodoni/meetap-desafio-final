@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {Image } from 'react-native';
+import { Image } from 'react-native';
 
 import Button from '~/components/Button';
 
@@ -10,8 +10,6 @@ export const Container = styled.View`
 
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: space-between; */
 `;
 
 export const Imagem = styled(Image)`
@@ -61,8 +59,3 @@ export const Title = styled.Text`
   font-size: 18px;
   color: #333;
 `;
-
-
-
-
-
